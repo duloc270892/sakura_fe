@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="minimal-ui, width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+  <title><%=locals && locals.title ? locals.title : '7SPORTS.CO'%></title>
+  <meta http-equiv="cache-control" content="max-age=0" />
+  <meta http-equiv="cache-control" content="no-cache" />
+  <meta http-equiv="expires" content="0" />
+  <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+  <meta http-equiv="pragma" content="no-cache" />
+  <meta name="referrer" content="no-referrer" />
+  <link rel="stylesheet" href="/fonts/font-awesome/css/font-awesome.min.css" />
+  <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet" />
+  <link rel="stylesheet" id="livestream_css" href="/styles/livestream.css?v=1.2.37">
+  <link rel="stylesheet" href="/plugins/jquery-ui-1.9.2/css/base/jquery-ui-1.9.2.min.css" />
+  <script type="text/javascript" src="/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/plugins/jquery-ui-1.9.2/js/jquery-ui-1.9.2.min.js"></script>
+  <script type="text/javascript" src="/js/vendor.min.js?v=1.2.37"></script>
+</head>
+<body>
+  <div id="app" />
+  <script type="text/javascript" src="/js/bootstrap.min.js?v=1.2.37"></script>
+  <script type="text/javascript">
+    (function (d, src, c) { var t = d.scripts[d.scripts.length - 1], s = d.createElement('script'); s.id = 'la_x2s6df8d'; s.async = true; s.src = src; s.onload = s.onreadystatechange = function () { var rs = this.readyState; if (rs && (rs != 'complete') && (rs != 'loaded')) { return; } c(this); }; t.parentElement.insertBefore(s, t.nextSibling); })(document,
+      'https://7sports.ladesk.com/scripts/track.js',
+      function (e) {
+        function _getSubdomain(h) {
+          var parts = h.split(".");
+          if (parts.length == 2) return "www";
+          return parts[0]
+        }
+        var hostname = window.location.hostname;
+        var subDM = _getSubdomain(hostname)
+        var SUBDOMAIN_ASIA = 'dev-asianbetonline'
+        if (subDM != SUBDOMAIN_ASIA) {
+          LiveAgent.createButton('d4823494', e);
+        }
+      });
+  </script>
+
+</body>
+
+</html>

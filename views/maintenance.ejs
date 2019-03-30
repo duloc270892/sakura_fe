@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>7SPORTS.CO MAINTENMANCE</title>
+	<link rel="stylesheet" href="/plugins/font-awesome/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+	<link rel="stylesheet" href="/styles/main.min.css"/>
+</head>
+<body>
+	  <script type="text/javascript" src="/js/jquery.min.js">
+	  </script>
+	  <script type="text/javascript" src="/plugins/moment/moment.min.js">
+	  </script>
+	  <script type="text/javascript">
+	  	$(document).ready(function() {
+		    setInterval(function(){
+		    	$('.maintenance__time span').text(moment().format('MM/DD/YYYY HH:mm:ss Z'))
+		    }, 500)
+		    const now = moment();
+		    const endTimeMaintenance = moment($('#setTimeoutReload').val(), 'YYYY-MM-DD-HH-mm-ss-Z');
+		    const timeDiff = endTimeMaintenance.diff(now, 'seconds');
+		    if(timeDiff>0){
+		    	setTimeout(function(){
+		    	location.reload()
+		    }, (timeDiff+2)*1000);//reload after maintenance 1 seconds
+		    }
+		    $('#text-from').text(moment($('#from').val(), 'MM/DD/YYYY HH:mm:ss Z').format('MM/DD/YYYY HH:mm:ss Z'))
+		    $('#text-to').text(moment($('#to').val(), 'MM/DD/YYYY HH:mm:ss Z').format('MM/DD/YYYY HH:mm:ss Z'))
+		});
+	  </script>
+	<div class="maintenance">
+		<div class="maintenance__logo">
+			<img src="/images/logo.png"/>
+		</div>
+		<div class="maintenance__content">
+			
+			<div class="maintenance__title">Site under maintenance.</div>
+			<div class="maintenance__icon">
+				<img src="/images/icons8-maintenance-100.png" alt="7Sports.co">
+			</div>
+			<input type="hidden" id="setTimeoutReload" value=<%=(locals &&
+			locals.objStatus &&
+			locals.objStatus.to) ? locals.moment(locals.objStatus.to).format('YYYY-MM-DD-HH-mm-ss-Z') : new Date()%> />
+			<input type="hidden" id="from" value="<%=(locals &&
+			 locals.moment && locals.objStatus) ? locals.moment(locals.objStatus.from).format('MM/DD/YYYY HH:mm:ss Z'): ''%>" />
+			 <input type="hidden" id="to" value="<%=(locals &&
+			 locals.moment && locals.objStatus) ? locals.moment(locals.objStatus.to).format('MM/DD/YYYY HH:mm:ss Z'): ''%>" />
+			<p class="maintenance__desc">7SPORTS will be down for a maintenance update from <span id="text-from"><%=(locals &&
+			 locals.moment && locals.objStatus) ? locals.moment(locals.objStatus.from).format('MM/DD/YYYY HH:mm:ss Z'): ''%></span> to <span id="text-to"><%=(locals &&
+			 locals.moment && locals.objStatus) ? locals.moment(locals.objStatus.to).format('MM/DD/YYYY HH:mm:ss Z'): ''%></span>.<br/> We apologize for any inconvenience this may cause.<br/> Thank you.</p>
+			<p class="maintenance__time"><span><%=(locals && locals.moment) ? locals.moment().format('MM/DD/YYYY HH:mm:ss Z') : ''%></span></p>
+		</div>
+	</div>
+</body>
+</html>
